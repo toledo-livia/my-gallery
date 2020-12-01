@@ -1,0 +1,32 @@
+<ul class="list">
+  <li
+    *ngFor="let photo of photos; trackBy: trackByPhoto; let i = index"
+    role="presentation"
+  >
+    <div class="card">
+      <app-card-content
+        [name]="photo.name"
+        [upload_date]="photo.upload_date"
+        [image]="photo.image"
+      ></app-card-content>
+      <footer class="card-footer">
+        <app-button-footer
+          class="card-footer-item"
+          [className]="'delete-item'"
+          [iconClasses]="'fas fa-trash'"
+          (clicked)="deletePhoto($event)"
+          label="Excluir"
+          [item]="photo"
+        ></app-button-footer>
+        <app-button-footer
+          class="card-footer-item"
+          [className]="'edit-item'"
+          [iconClasses]="'fas fa-edit'"
+          (clicked)="selectPhoto($event)"
+          label="Editar"
+          [item]="photo"
+        ></app-button-footer>
+      </footer>
+    </div>
+  </li>
+</ul>

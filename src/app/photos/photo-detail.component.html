@@ -1,0 +1,47 @@
+<div class="card edit-detail">
+  <header class="card-header">
+    <p class="card-header-title">
+      {{editingPhoto.name}}
+      &nbsp;
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <div class="field" *ngIf="editingPhoto.id">
+        <label class="label" for="id">
+          id
+        </label>
+        <input name="id" class="input" type="text" [(ngModel)]="editingPhoto.id" placeholder="e.g. PhotoColleen"
+          readOnly />
+      </div>
+      <div class="field">
+        <label class="label" for="name">
+          nome
+        </label>
+        <input name="name" class="input" type="text" [(ngModel)]="editingPhoto.name" placeholder="" />
+      </div>
+      <div class="field">
+        <label class="label" for="upload_date">
+          data de upload
+        </label>
+        <input name="upload_date" class="input" type="text" [(ngModel)]="editingPhoto.upload_date"
+          placeholder="dd/mm/yyyy" />
+      </div>
+      <div class="field" *ngIf="editingPhoto.image">
+        <img src={{editingPhoto.image}} width="100px;" height="100px"; />
+      </div>
+      <div class="field">
+        <label class="label" for="image">
+          foto
+        </label>
+        <input type="file" (change)="getBaseUrl()">
+      </div>
+    </div>
+  </div>
+  <footer class="card-footer ">
+    <app-button-footer class="card-footer-item" [className]="'cancel-button'" [iconClasses]="'fas fa-undo'"
+      (clicked)="clear()" label="Cancelar" [item]="editingPhoto"></app-button-footer>
+    <app-button-footer class="card-footer-item" [className]="'save-button'" [iconClasses]="'fas fa-save'"
+      (clicked)="savePhoto()" label="Salvar" [item]="editingPhoto"></app-button-footer>
+  </footer>
+</div>

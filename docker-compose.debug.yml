@@ -1,0 +1,13 @@
+version: '2.1'
+
+services:
+  my-gallery:
+    image: my-gallery
+    build: .
+    environment:
+      NODE_ENV: development
+      WWW: ./public
+    ports:
+      - 7626:7626
+      - 9229:9229
+    command: node --inspect=0.0.0.0:9229 server.js

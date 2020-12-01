@@ -1,0 +1,31 @@
+<div class="content-container">
+  <app-list-header
+    title="Fotos"
+    (add)="enableAddMode()"
+    (refresh)="getPhotos()"
+  ></app-list-header>
+  <div class="columns is-multiline is-variable">
+    <div class="column is-8" *ngIf="photos$ | async as photos">
+      <app-photo-list
+        *ngIf="!selected"
+        [photos]="photos"
+        (selected)="select($event)"
+        (deleted)="askToDelete($event)"
+      ></app-photo-list>
+      <app-photo-detail
+        *ngIf="selected"
+        [photo]="selected"
+        (unselect)="clear()"
+        (save)="save($event)"
+      ></app-photo-detail>
+    </div>
+  </div>
+
+  <app-modal
+    class="modal-photo"
+    [message]="message"
+    [isOpen]="showModal"
+    (handleNo)="closeModal()"
+    (handleYes)="deletePhoto()"
+  ></app-modal>
+</div>

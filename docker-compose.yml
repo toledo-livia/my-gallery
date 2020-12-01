@@ -1,0 +1,11 @@
+version: '2.1'
+
+services:
+  my-gallery:
+    image: my-gallery
+    build: .
+    environment:
+      NODE_ENV: production
+      WWW: ./public
+    ports:
+      - 7626:7626
